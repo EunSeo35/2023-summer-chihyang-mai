@@ -23,11 +23,11 @@ public abstract  class BaseEntity {
     @CreatedDate
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss", timezone = "Asia/Seoul")
     @Column(updatable = false)
-    private LocalDateTime regDate;
+    private LocalDateTime created_time;
 
     @LastModifiedDate
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss", timezone = "Asia/Seoul")
-    private LocalDateTime modifiedDate;
+    private LocalDateTime modified_time;
 
     private boolean deleted = Boolean.FALSE;
 }
