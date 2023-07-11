@@ -17,7 +17,7 @@ import java.util.List;
 @AllArgsConstructor
 @Builder
 //@Where(clause = "deleted = false")
-//@SQLDelete(sql = "UPDATE room SET deleted = true WHERE id = ?")
+//@SQLDelete(sql = "UPDATE user SET deleted = true WHERE id = ?")
 public class User {
 
     @Id

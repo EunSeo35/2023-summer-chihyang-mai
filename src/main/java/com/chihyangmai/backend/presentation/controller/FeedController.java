@@ -34,10 +34,12 @@ public class FeedController {
         List<FeedDto> allFeedDtoList = feedService.getAllFeeds();
         List<FeedInfoResponse> response = allFeedDtoList.stream().map(FeedInfoResponse::from).collect(Collectors.toList());
         return ResponseEntity.ok(response);
+    }
 
-
-
-
+    @DeleteMapping("/feed")
+    public ResponseEntity<Void> deleteById (@RequestParam Long id) {
+        feedService.deleteFeed(id);
+        return ResponseEntity.ok(null);
     }
 
 
