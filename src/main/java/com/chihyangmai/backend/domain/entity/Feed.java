@@ -44,15 +44,10 @@ public class Feed extends BaseEntity {
     private List<Content> contentList = new ArrayList<>();
 
     public static Feed toFeed (FeedDto dto, User user) {
-        //image url들을 각각 entity를 생성하여 저장한다
-        List<Content> newContentList = dto.getImageUrls().stream()
-                .map(Content::toContent)
-                .collect(Collectors.toList());
         return Feed.builder()
                 .content(dto.getContent())
                 .tag(dto.getTag())
                 .writer(user)
-                .contentList(newContentList)
                 .build();
     }
 

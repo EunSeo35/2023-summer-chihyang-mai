@@ -31,9 +31,10 @@ public class Content {
     @ManyToOne(fetch = FetchType.LAZY)
     private Feed feed;
 
-    public static Content toContent (String imageUrl) {
+    public static Content toContent (String imageUrl, Feed feed) {
         return Content.builder()
                 .contentUrl(imageUrl)
+                .feed(feed)
                 .build();
     }
 }
