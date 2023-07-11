@@ -1,14 +1,14 @@
 package com.chihyangmai.backend.domain.entity;
 
 import com.chihyangmai.backend.domain.entity.common.BaseEntity;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 import org.hibernate.annotations.SQLDelete;
 import org.hibernate.annotations.Where;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Getter
@@ -25,4 +25,13 @@ public class User extends BaseEntity {
     private Long id;
 
     private String name;
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "writer", cascade = CascadeType.ALL)
+    private List<Feed> feedList = new ArrayList<>();
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "writer", cascade = CascadeType.ALL)
+    private List<FundRequest> fundRequestList = new ArrayList<>();
+
 }
