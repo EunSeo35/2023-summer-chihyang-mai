@@ -1,4 +1,4 @@
-package com.chihyangmai.backend.domain.entity.common;
+package com.chihyangmai.backend.domain;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;
