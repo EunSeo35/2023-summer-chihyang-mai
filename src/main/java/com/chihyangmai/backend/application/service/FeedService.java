@@ -49,6 +49,10 @@ public class FeedService {
         return allFeedDtoList;
     }
 
-
+    @Transactional
+    public void deleteFeed (Long id) {
+        System.out.println("Feed id = " + id);
+        feedRepository.deleteById(id);
+    }
 
 }

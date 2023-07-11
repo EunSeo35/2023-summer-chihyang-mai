@@ -15,7 +15,7 @@ import javax.persistence.*;
 @AllArgsConstructor
 @Builder
 @Where(clause = "deleted = false")
-@SQLDelete(sql = "UPDATE room SET deleted = true WHERE id = ?")
+@SQLDelete(sql = "UPDATE content SET deleted = true WHERE id = ?")
 public class Content extends BaseEntity {
 
     @Id
