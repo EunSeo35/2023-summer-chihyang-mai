@@ -1,5 +1,6 @@
 package com.chihyangmai.backend.presentation.controller;
 
+import com.chihyangmai.backend.application.dto.FeedDto;
 import com.chihyangmai.backend.application.service.FeedService;
 import com.chihyangmai.backend.presentation.request.AddFeedRequest;
 import lombok.RequiredArgsConstructor;
@@ -18,14 +19,14 @@ public class FeedController {
     private FeedService feedService;
     /**
      * Save feed*/
-    /*
-    @PostMapping("/feed")
-    public ResponseEntity<Long> save (@RequestBody AddFeedRequest) {
-        Long savedId = feedService.
 
+    @PostMapping("/feed")
+    public ResponseEntity<Long> save (@RequestBody AddFeedRequest request) {
+        Long savedId = feedService.addFeed(FeedDto.from(request));
+        return ResponseEntity.ok(savedId);
 
     }
 
-     */
+
 
 }

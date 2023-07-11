@@ -17,7 +17,7 @@ public class AddFeedRequest {
 
     private String tag;
 
-    private Long writerId;
+    private Long writer_id;
 
-    private ArrayList<String> imageUrls;
+    private ArrayList<String> image_urls;
 }

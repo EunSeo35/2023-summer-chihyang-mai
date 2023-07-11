@@ -21,7 +21,7 @@ public class Content {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String contentURL;
+    private String contentUrl;
 
     @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY)
@@ -30,4 +30,10 @@ public class Content {
     @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY)
     private Feed feed;
+
+    public static Content toContent (String imageUrl) {
+        return Content.builder()
+                .contentUrl(imageUrl)
+                .build();
+    }
 }

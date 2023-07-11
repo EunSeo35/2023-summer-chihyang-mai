@@ -23,8 +23,8 @@ public class FeedDto {
         return FeedDto.builder()
                 .content(request.getContent())
                 .tag(request.getTag())
-                .writerId(request.getWriterId())
-                .imageUrls(request.getImageUrls())
+                .writerId(request.getWriter_id())
+                .imageUrls(request.getImage_urls())
                 .build();
     }
 }

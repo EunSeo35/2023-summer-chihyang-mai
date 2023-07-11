@@ -16,9 +16,9 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-@Where(clause = "deleted = false")
-@SQLDelete(sql = "UPDATE room SET deleted = true WHERE id = ?")
-public class User extends BaseEntity {
+//@Where(clause = "deleted = false")
+//@SQLDelete(sql = "UPDATE room SET deleted = true WHERE id = ?")
+public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
