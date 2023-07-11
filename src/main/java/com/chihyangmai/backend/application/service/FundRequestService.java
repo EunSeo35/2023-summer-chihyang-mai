@@ -12,7 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 public class FundRequestService {
     private final FundRequestRepository fundrequestRepository;
     @Transactional
-    public static void deleteFundRequest(Long fundrequestId){
+    public void deleteFundRequest(Long fundrequestId){
         System.out.println("roomId = " + fundrequestId);
         fundrequestRepository.deleteById(fundrequestId);
     }
