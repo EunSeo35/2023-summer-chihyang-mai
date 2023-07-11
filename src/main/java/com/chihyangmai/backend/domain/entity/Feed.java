@@ -15,6 +15,7 @@ import java.util.stream.Collectors;
 @Entity
 @Getter
 @Setter
+@ToString
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder

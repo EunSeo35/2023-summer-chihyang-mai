@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.util.ArrayList;
+import java.util.List;
 
 @Getter
 @Setter
@@ -19,5 +20,6 @@ public class AddFeedRequest {
 
     private Long writer_id;
 
-    private ArrayList<String> image_urls;
+    private List<String> image_urls = new ArrayList<>();
+
 }

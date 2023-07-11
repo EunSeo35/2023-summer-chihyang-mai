@@ -11,6 +11,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -33,5 +34,21 @@ public class FeedService {
 
         return newFeed.getId();
     }
+
+    @Transactional
+    public List<FeedDto> getAllFeeds() {
+        List<Feed> allFeedList= feedRepository.findAll();
+        List<FeedDto> allFeedDtoList = new ArrayList<>();
+        //각 feed의 contentList의 content 객체의 url을 추출하여 list로 만든다
+        for (Feed f : allFeedList) {
+            List<String> contentListStr = f.getContentList().stream().map(url -> url.getContentUrl())
+                    .collect(Collectors.toList());
+            allFeedDtoList.add(FeedDto.from(f, contentListStr));
+        }
+
+        return allFeedDtoList;
+    }
+
+
 
 }
