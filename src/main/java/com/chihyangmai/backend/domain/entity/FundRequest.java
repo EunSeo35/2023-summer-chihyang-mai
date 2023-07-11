@@ -6,6 +6,8 @@ import org.hibernate.annotations.SQLDelete;
 import org.hibernate.annotations.Where;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Getter
@@ -28,4 +30,8 @@ public class FundRequest {
     @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY)
     private User writer;
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "fundRequest", cascade = CascadeType.ALL)
+    private List<Content> contentList = new ArrayList<>();
 }

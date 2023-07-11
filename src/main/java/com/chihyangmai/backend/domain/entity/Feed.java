@@ -8,6 +8,8 @@ import org.hibernate.annotations.SQLDelete;
 import org.hibernate.annotations.Where;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Getter
@@ -27,7 +29,6 @@ public class Feed extends BaseEntity {
 
     private String tag;
 
-
     @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY)
     private User writer;
@@ -37,9 +38,15 @@ public class Feed extends BaseEntity {
     @OneToOne
     private FundRequest fundRequest;
 
+    @JsonIgnore
+    @OneToMany(mappedBy = "feed", cascade = CascadeType.ALL)
+    private List<Content> contentList = new ArrayList<>();
 
-    public static Feed toFeed (FeedDto dto) {
+    public static Feed toFeed (FeedDto dto, User user) {
         return Feed.builder()
+                .content(dto.getContent())
+                .tag(dto.getTag())
+                .writer(user)
                 .build();//.~~~
     }
 
