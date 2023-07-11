@@ -1,5 +1,6 @@
 package com.chihyangmai.backend.domain.entity;
 
+import com.chihyangmai.backend.domain.entity.common.BaseEntity;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 import org.hibernate.annotations.SQLDelete;
@@ -17,7 +18,7 @@ import java.util.List;
 @Builder
 @Where(clause = "deleted = false")
 @SQLDelete(sql = "UPDATE room SET deleted = true WHERE id = ?")
-public class FundRequest {
+public class FundRequest extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
