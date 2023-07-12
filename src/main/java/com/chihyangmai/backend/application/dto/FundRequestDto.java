@@ -1,48 +1,32 @@
-package com.chihyangmai.backend.domain.entity;
+package com.chihyangmai.backend.application.dto;
 
-
-import com.chihyangmai.backend.application.dto.FundRequestDto;
-import com.chihyangmai.backend.domain.entity.common.BaseEntity;
 import com.chihyangmai.backend.presentation.request.AddFundRequest;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import lombok.*;
-import org.hibernate.annotations.SQLDelete;
-import org.hibernate.annotations.Where;
+import com.chihyangmai.backend.presentation.request.UpdateFundRequest;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
-import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.List;
 
-@Entity
 @Getter
-@Setter
-@Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Where(clause = "deleted = false")
-@SQLDelete(sql = "UPDATE fund_request SET deleted = true WHERE id = ?")
-public class FundRequest extends BaseEntity {
-
-    @Id //기본키
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+@Builder
+public class FundRequestDto {
     private Long id;
-
-    @JsonIgnore
-    @ManyToOne(fetch = FetchType.LAZY)
-    private User writer;
-
+    private UserDto writer;
+    private Long writerId;
     private String title;
     private String content;
     private String tag;
     private int request_num;
+    private String influencer;
+    private ArrayList<String> imageUrls;
     private LocalDateTime created_time;
     private LocalDateTime finished_time;
-    private String influencer;
 
-    @JsonIgnore
-    @OneToMany(mappedBy = "feed", cascade = CascadeType.ALL)
-    private List<Content> contentList = new ArrayList<>();
 
     public static FundRequestDto from(AddFundRequest request) {
         return FundRequestDto.builder()
@@ -52,6 +36,8 @@ public class FundRequest extends BaseEntity {
                 .tag(request.getTag())
                 .influencer(request.getInfluencer())
                 .imageUrls(request.getImageUrls())
+                .created_time(LocalDateTime.now())
+                .finished_time(null)
                 .build();
     }
 
@@ -63,21 +49,14 @@ public class FundRequest extends BaseEntity {
                 .tag(request.getTag())
                 .influencer(request.getInfluencer())
                 .imageUrls(request.getImageUrls())
+                .created_time(LocalDateTime.now())
+                .finished_time(null)
                 .build();
     }
 
-    public static FundRequest toFund(FundRequestDto dto) {
-        return FundRequest.builder()
-                .title(dto.getTitle())
-                .content(dto.getContent())
-                .tag(dto.getTag())
-                .influencer(dto.getInfluencer())
-                .content(dto.getContent())
+    public static FundRequestDto toUpdate(UpdateFundRequest request) {
+        return FundRequestDto.builder()
+                .request_num(request.getRequest_num())
                 .build();
     }
-
-
 }
-
-
-
