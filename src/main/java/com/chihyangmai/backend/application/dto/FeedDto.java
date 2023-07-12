@@ -25,6 +25,8 @@ public class FeedDto {
 
     private Long writerId;
 
+    private UserDto writer;
+
     private List<String> imageUrls = new ArrayList<>();
 
     private LocalDateTime created_time;
@@ -45,6 +47,7 @@ public class FeedDto {
                 .tag(feed.getTag())
                 .created_time(feed.getCreated_time())
                 .writerId(feed.getWriter().getId())
+                .writer(UserDto.from(feed.getWriter()))
                 .imageUrls(urls)
                 .build();
     }
