@@ -1,7 +1,9 @@
 package com.chihyangmai.backend.presentation.response;
 
+import com.chihyangmai.backend.application.dto.ContentDto;
 import com.chihyangmai.backend.application.dto.FeedDto;
 import com.chihyangmai.backend.application.dto.UserDto;
+import com.chihyangmai.backend.domain.entity.Content;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.*;
 
@@ -28,7 +30,7 @@ public class FeedInfoResponse {
 
     private UserDto writer;
 
-    private List<String> image_urls = new ArrayList<>();
+    private List<ContentDto> image_urls = new ArrayList<>();
     //
     public static FeedInfoResponse from (FeedDto dto) {
         return FeedInfoResponse.builder()
@@ -37,7 +39,7 @@ public class FeedInfoResponse {
                 .tag(dto.getTag())
                 .created_time(dto.getCreated_time())
                 .writer(dto.getWriter())
-                .image_urls(dto.getImageUrls())
+                .image_urls(dto.getImageUrlsDto())
                 .build();
     }
 
