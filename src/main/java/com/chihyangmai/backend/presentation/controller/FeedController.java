@@ -20,8 +20,6 @@ public class FeedController {
     @Autowired
     private FeedService feedService;
 
-    /**
-     * Save feed*/
     @PostMapping("/feed")
     public ResponseEntity<Long> save (@RequestBody AddFeedRequest request) {
         Long savedId = feedService.addFeed(FeedDto.from(request));
@@ -30,7 +28,6 @@ public class FeedController {
 
     @GetMapping("/feed")
     public ResponseEntity<List<FeedInfoResponse>> getAllFeeds () {
-
         List<FeedDto> allFeedDtoList = feedService.getAllFeeds();
         List<FeedInfoResponse> response = allFeedDtoList.stream().map(FeedInfoResponse::from).collect(Collectors.toList());
         return ResponseEntity.ok(response);

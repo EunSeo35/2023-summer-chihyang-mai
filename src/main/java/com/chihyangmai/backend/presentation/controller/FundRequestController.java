@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.*;
 @RequiredArgsConstructor
 public class FundRequestController {
 
-
     private final FundRequestService fundrequestService;
 
     @DeleteMapping("/fund")

@@ -27,7 +27,9 @@ public class FeedDto {
 
     private UserDto writer;
 
-    private List<String> imageUrls = new ArrayList<>();
+    private List<String> imageUrlsStr = new ArrayList<>();
+
+    private List<ContentDto> imageUrlsDto = new ArrayList<>();
 
     private LocalDateTime created_time;
 
@@ -36,10 +38,11 @@ public class FeedDto {
                 .content(request.getContent())
                 .tag(request.getTag())
                 .writerId(request.getWriter_id())
-                .imageUrls(request.getImage_urls())
+                .imageUrlsStr(request.getImage_urls())
                 .build();
     }
 
+    /*
     public static FeedDto from (Feed feed, List<String> urls) {
         return FeedDto.builder()
                 .id(feed.getId())
@@ -49,6 +52,19 @@ public class FeedDto {
                 .writerId(feed.getWriter().getId())
                 .writer(UserDto.from(feed.getWriter()))
                 .imageUrls(urls)
+                .build();
+    }
+
+     */
+    public static FeedDto from (Feed feed, List<ContentDto> contentDtoList) {
+        return FeedDto.builder()
+                .id(feed.getId())
+                .content(feed.getContent())
+                .tag(feed.getTag())
+                .created_time(feed.getCreated_time())
+                .writerId(feed.getWriter().getId())
+                .writer(UserDto.from(feed.getWriter()))
+                .imageUrlsDto(contentDtoList)
                 .build();
     }
 }

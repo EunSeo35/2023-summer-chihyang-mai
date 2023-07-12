@@ -10,7 +10,9 @@ import org.springframework.transaction.annotation.Transactional;
 @Service
 @RequiredArgsConstructor
 public class FundRequestService {
+
     private final FundRequestRepository fundrequestRepository;
+
     @Transactional
     public void deleteFundRequest(Long fundrequestId){
         System.out.println("roomId = " + fundrequestId);
