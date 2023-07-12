@@ -20,10 +20,6 @@ public class AddFundRequest {
     private String title;
     private String content;
     private String tag;
-    private int request_num;
     private String influencer;
     private ArrayList<String> imageUrls;
-    private LocalDateTime created_time;
-    private LocalDateTime finished_time;
-
 }
