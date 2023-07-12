@@ -22,7 +22,7 @@ public class FundRequestController {
     // create funding
     @PostMapping("/fund")
     public ResponseEntity<Long> save(@RequestBody AddFundRequest request) {
-        Long savedId = fundService.addFund(FundDto.from(request));
+        Long savedId = fundService.addFund(FundDto.toAdd(request));
         return ResponseEntity.ok(savedId);
     }
 }
