@@ -1,6 +1,7 @@
 package com.chihyangmai.backend.presentation.response;
 
 import com.chihyangmai.backend.application.dto.FeedDto;
+import com.chihyangmai.backend.application.dto.UserDto;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.*;
 
@@ -25,17 +26,17 @@ public class FeedInfoResponse {
     @JsonFormat(shape = JsonFormat.Shape.STRING)
     private LocalDateTime created_time;
 
-    private Long writer_id;
+    private UserDto writer;
 
     private List<String> image_urls = new ArrayList<>();
-
+    //
     public static FeedInfoResponse from (FeedDto dto) {
         return FeedInfoResponse.builder()
                 .id(dto.getId())
                 .content(dto.getContent())
                 .tag(dto.getTag())
                 .created_time(dto.getCreated_time())
-                .writer_id(dto.getWriterId())
+                .writer(dto.getWriter())
                 .image_urls(dto.getImageUrls())
                 .build();
     }
