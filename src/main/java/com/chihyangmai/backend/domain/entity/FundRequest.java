@@ -3,12 +3,10 @@ package com.chihyangmai.backend.domain.entity;
 
 import com.chihyangmai.backend.application.dto.FundRequestDto;
 import com.chihyangmai.backend.domain.entity.common.BaseEntity;
-import com.chihyangmai.backend.presentation.request.AddFundRequest;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 import org.hibernate.annotations.SQLDelete;
 import org.hibernate.annotations.Where;
-
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -31,6 +29,7 @@ public class FundRequest extends BaseEntity {
     private String tag;
     private int request_num;
     private String influencer;
+
 
     @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY)

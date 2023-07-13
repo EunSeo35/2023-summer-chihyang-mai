@@ -22,6 +22,4 @@ public class AddFundRequest {
     private String tag;
     private String influencer;
     private List<String> image_urls = new ArrayList<>();
-
-    //    private ArrayList<String> imageUrls;
 }

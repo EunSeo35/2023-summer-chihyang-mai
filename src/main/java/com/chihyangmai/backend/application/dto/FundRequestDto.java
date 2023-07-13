@@ -51,6 +51,7 @@ public class FundRequestDto {
                 .created_time(fundRequest.getCreated_time())
                 .finished_time(fundRequest.getCreated_time())
                 .writer(UserDto.from(fundRequest.getWriter()))
+                .writerId(fundRequest.getWriter().getId())
                 .request_num(fundRequest.getRequest_num())
                 .imageUrlsDto(contentDtoList)
                 .build();

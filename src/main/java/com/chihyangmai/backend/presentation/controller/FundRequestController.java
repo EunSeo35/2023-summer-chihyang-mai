@@ -1,13 +1,8 @@
 package com.chihyangmai.backend.presentation.controller;
 
-
-import com.chihyangmai.backend.application.dto.FeedDto;
 import com.chihyangmai.backend.application.dto.FundRequestDto;
 import com.chihyangmai.backend.application.service.FundRequestService;
 import com.chihyangmai.backend.presentation.request.AddFundRequest;
-import com.chihyangmai.backend.presentation.request.UpdateFundRequest;
-import com.chihyangmai.backend.presentation.response.FundInfoResponse;
-import com.chihyangmai.backend.presentation.response.FeedInfoResponse;
 import com.chihyangmai.backend.presentation.response.FundInfoResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
