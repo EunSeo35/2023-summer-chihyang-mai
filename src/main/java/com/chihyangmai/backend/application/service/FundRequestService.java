@@ -40,6 +40,7 @@ public class FundRequestService {
     @Transactional
     public Long addFund(FundRequestDto dto) {
 //        User user = userRepository.findById(dto.getWriterId()).orElseThrow(() -> new IllegalArgumentException("No such user"));
+
         FundRequest newFundRequest = fundrequestRepository.save(FundRequest.toFund(dto));
         List<Content> contentList = dto.getImageUrlsStr().stream()
                 .map(url -> Content.toContent(url, newFundRequest))

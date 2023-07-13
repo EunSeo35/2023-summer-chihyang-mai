@@ -5,7 +5,6 @@ import com.chihyangmai.backend.application.service.FeedService;
 import com.chihyangmai.backend.presentation.request.AddFeedRequest;
 import com.chihyangmai.backend.presentation.response.FeedInfoResponse;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
