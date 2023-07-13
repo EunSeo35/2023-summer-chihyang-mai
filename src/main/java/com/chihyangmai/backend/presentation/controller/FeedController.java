@@ -17,8 +17,8 @@ import java.util.stream.Collectors;
 @RequestMapping("/api")
 @RequiredArgsConstructor
 public class FeedController {
-    @Autowired
-    private FeedService feedService;
+
+    private final FeedService feedService;
 
     @PostMapping("/feed")
     public ResponseEntity<Long> save (@RequestBody AddFeedRequest request) {

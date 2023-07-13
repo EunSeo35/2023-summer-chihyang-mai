@@ -36,36 +36,10 @@ public class FundRequest extends BaseEntity {
     private int request_num;
     private String influencer;
 
-//
-//    private LocalDateTime created_time;
-//    private LocalDateTime finished_time;
-
-
     @JsonIgnore
-    @OneToMany(mappedBy = "feed", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "fund request", cascade = CascadeType.ALL)
     private List<Content> contentList = new ArrayList<>();
 
-//    public static FundRequestDto from(AddFundRequest request) {
-//        return FundRequestDto.builder()
-//                .writer_id(request.getWriter_id())
-//                .title(request.getTitle())
-//                .content(request.getContent())
-//                .tag(request.getTag())
-//                .influencer(request.getInfluencer())
-////                .imageUrls(request.getImageUrls())
-//                .build();
-//    }
-
-//    public static FundRequestDto toAdd(AddFundRequest request) {
-//        return FundRequestDto.builder()
-//                .writer_Id(request.getWriter_Id())
-//                .title(request.getTitle())
-//                .content(request.getContent())
-//                .tag(request.getTag())
-//                .influencer(request.getInfluencer())
-////                .imageUrls(request.getImageUrls())
-//                .build();
-//    }
 
     public static FundRequest toFund(FundRequestDto dto) {
         return FundRequest.builder()

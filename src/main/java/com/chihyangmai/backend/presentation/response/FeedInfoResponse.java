@@ -25,13 +25,12 @@ public class FeedInfoResponse {
 
     private String tag;
 
-    @JsonFormat(shape = JsonFormat.Shape.STRING)
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss")
     private LocalDateTime created_time;
 
     private UserDto writer;
 
     private List<ContentDto> image_urls = new ArrayList<>();
-    //
     public static FeedInfoResponse from (FeedDto dto) {
         return FeedInfoResponse.builder()
                 .id(dto.getId())
