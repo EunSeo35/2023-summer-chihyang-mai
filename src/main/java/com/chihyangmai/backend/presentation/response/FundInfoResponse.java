@@ -1,7 +1,6 @@
 package com.chihyangmai.backend.presentation.response;
 
 import com.chihyangmai.backend.application.dto.ContentDto;
-import com.chihyangmai.backend.application.dto.FeedDto;
 import com.chihyangmai.backend.application.dto.FundRequestDto;
 import com.chihyangmai.backend.application.dto.UserDto;
 import com.fasterxml.jackson.annotation.JsonFormat;
@@ -25,8 +24,9 @@ public class FundInfoResponse {
         private String content;
         private String tag;
         private int requested_num;
-        @JsonFormat(shape = JsonFormat.Shape.STRING)
+        @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss")
         private LocalDateTime created_time;
+        @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss")
         private LocalDateTime finished_time;
         private String influencer;
         private List<ContentDto> image_urls = new ArrayList<>();

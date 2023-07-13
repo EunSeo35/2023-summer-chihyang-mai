@@ -25,13 +25,13 @@ public class FundRequestController {
 
     @PostMapping("/fund")
     public ResponseEntity<Long> save(@RequestBody AddFundRequest request) {
-        Long savedId = fundrequestService.addFund(FundRequestDto.toAdd(request));
+        Long savedId = fundrequestService.addFund(FundRequestDto.from(request));
         return ResponseEntity.ok(savedId);
     }
 
     @GetMapping("/fund")
-    public ResponseEntity<List<FundInfoResponse>> getAllFunds() {
-        List<FundRequestDto> allFundReqestDtoList = fundrequestService.getAllFunds();
+    public ResponseEntity<List<FundInfoResponse>> getAllFundRequests() {
+        List<FundRequestDto> allFundReqestDtoList = fundrequestService.getAllFundRequests();
         List<FundInfoResponse> response = allFundReqestDtoList.stream().map(FundInfoResponse::from).collect(Collectors.toList());
         return ResponseEntity.ok(response);
 
