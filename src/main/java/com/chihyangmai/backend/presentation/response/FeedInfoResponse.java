@@ -31,6 +31,7 @@ public class FeedInfoResponse {
     private UserDto writer;
 
     private List<ContentDto> image_urls = new ArrayList<>();
+
     public static FeedInfoResponse from (FeedDto dto) {
         return FeedInfoResponse.builder()
                 .id(dto.getId())
