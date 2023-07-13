@@ -18,7 +18,6 @@ import java.util.List;
 @Builder
 @ToString
 public class FundInfoResponse {
-
         private Long id;
         private UserDto writer;
         private String title;
