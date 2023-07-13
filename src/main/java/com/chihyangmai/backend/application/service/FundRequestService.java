@@ -50,7 +50,7 @@ public class FundRequestService {
     }
 
     @Transactional
-    public List<FundRequestDto> getAllFunds() {
+    public List<FundRequestDto> getAllFundRequests() {
         List<FundRequest> allFundRequestList = fundrequestRepository.findAll();
         List<FundRequestDto> allFundRequestDtoList = new ArrayList<>();
         for (FundRequest f : allFundRequestList) {

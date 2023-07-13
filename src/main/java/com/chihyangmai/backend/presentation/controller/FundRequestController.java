@@ -30,8 +30,8 @@ public class FundRequestController {
     }
 
     @GetMapping("/fund")
-    public ResponseEntity<List<FundInfoResponse>> getAllFunds() {
-        List<FundRequestDto> allFundReqestDtoList = fundrequestService.getAllFunds();
+    public ResponseEntity<List<FundInfoResponse>> getAllFundRequests() {
+        List<FundRequestDto> allFundReqestDtoList = fundrequestService.getAllFundRequests();
         List<FundInfoResponse> response = allFundReqestDtoList.stream().map(FundInfoResponse::from).collect(Collectors.toList());
         return ResponseEntity.ok(response);
 
