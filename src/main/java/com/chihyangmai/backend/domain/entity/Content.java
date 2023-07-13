@@ -39,4 +39,11 @@ public class Content extends BaseEntity {
                 .build();
     }
 
+    public static Content toContent (String imageUrl, FundRequest fundRequest) {
+        return Content.builder()
+                .contentUrl(imageUrl)
+                .fundRequest(fundRequest)
+                .build();
+    }
+
 }
