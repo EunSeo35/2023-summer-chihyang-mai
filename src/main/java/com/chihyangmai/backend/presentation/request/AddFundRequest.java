@@ -14,12 +14,13 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 public class AddFundRequest {
+
     private User writer;
     private Long writer_id;
     private String title;
-    private String request_num;
     private String content;
     private String tag;
     private String influencer;
     private List<String> image_urls = new ArrayList<>();
+
 }

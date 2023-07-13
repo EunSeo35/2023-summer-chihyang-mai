@@ -32,9 +32,6 @@ public class Content extends BaseEntity {
     @ManyToOne(fetch = FetchType.LAZY)
     private Feed feed;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    private FundRequest fundrequest;
-
     public static Content toContent (String imageUrl, Feed feed) {
         return Content.builder()
                 .contentUrl(imageUrl)

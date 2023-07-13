@@ -17,7 +17,6 @@ import java.util.List;
 @Builder
 @ToString
 public class FundInfoResponse {
-
         private Long id;
         private UserDto writer;
         private String title;
@@ -37,6 +36,7 @@ public class FundInfoResponse {
                     .writer(dto.getWriter())
                     .title(dto.getTitle())
                     .content(dto.getContent())
+                    .influencer(dto.getInfluencer())
                     .tag(dto.getTag())
                     .requested_num(dto.getRequest_num())
                     .created_time(dto.getCreated_time())
