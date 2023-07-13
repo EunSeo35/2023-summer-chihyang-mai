@@ -42,20 +42,6 @@ public class FeedDto {
                 .build();
     }
 
-    /*
-    public static FeedDto from (Feed feed, List<String> urls) {
-        return FeedDto.builder()
-                .id(feed.getId())
-                .content(feed.getContent())
-                .tag(feed.getTag())
-                .created_time(feed.getCreated_time())
-                .writerId(feed.getWriter().getId())
-                .writer(UserDto.from(feed.getWriter()))
-                .imageUrls(urls)
-                .build();
-    }
-
-     */
     public static FeedDto from (Feed feed, List<ContentDto> contentDtoList) {
         return FeedDto.builder()
                 .id(feed.getId())

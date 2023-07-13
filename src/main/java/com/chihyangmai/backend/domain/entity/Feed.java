@@ -34,7 +34,6 @@ public class Feed extends BaseEntity {
     @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY)
     private User writer;
-    //post 기능에서 writer id를 받았을 때 entity랑 연결시켜줘야 하는 작업 필요
 
     @JsonIgnore
     @OneToOne

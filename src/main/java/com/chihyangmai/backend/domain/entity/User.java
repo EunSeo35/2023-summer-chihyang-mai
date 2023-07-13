@@ -1,10 +1,7 @@
 package com.chihyangmai.backend.domain.entity;
 
-import com.chihyangmai.backend.domain.entity.common.BaseEntity;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
-import org.hibernate.annotations.SQLDelete;
-import org.hibernate.annotations.Where;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -16,8 +13,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-//@Where(clause = "deleted = false")
-//@SQLDelete(sql = "UPDATE user SET deleted = true WHERE id = ?")
+@Table(name = "Member")
 public class User {
 
     @Id
