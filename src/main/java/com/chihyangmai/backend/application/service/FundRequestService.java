@@ -39,13 +39,13 @@ public class FundRequestService {
 
     @Transactional
     public Long addFund(FundRequestDto dto) {
-//        User user = userRepository.findById(dto.getWriterId()).orElseThrow(() -> new IllegalArgumentException("No such user"));
-        FundRequest newFundRequest = fundrequestRepository.save(FundRequest.toFund(dto));
+        User user = userRepository.findById(dto.getWriterId()).orElseThrow(() -> new IllegalArgumentException("No such user"));
+        FundRequest newFundRequest = fundrequestRepository.save(FundRequest.toFund(dto, user));
         List<Content> contentList = dto.getImageUrlsStr().stream()
                 .map(url -> Content.toContent(url, newFundRequest))
                 .collect(Collectors.toList());
         newFundRequest.setContentList(contentList);
-
+        newFundRequest.setFinished_time(newFundRequest.getCreated_time().plusDays(100));
         return newFundRequest.getId();
     }
 

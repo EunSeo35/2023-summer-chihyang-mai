@@ -25,8 +25,9 @@ public class FundInfoResponse {
         private String content;
         private String tag;
         private int requested_num;
-        @JsonFormat(shape = JsonFormat.Shape.STRING)
+        @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss")
         private LocalDateTime created_time;
+        @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss")
         private LocalDateTime finished_time;
         private String influencer;
         private List<ContentDto> image_urls = new ArrayList<>();
@@ -37,6 +38,7 @@ public class FundInfoResponse {
                     .writer(dto.getWriter())
                     .title(dto.getTitle())
                     .content(dto.getContent())
+                    .influencer(dto.getInfluencer())
                     .tag(dto.getTag())
                     .requested_num(dto.getRequest_num())
                     .created_time(dto.getCreated_time())

@@ -34,7 +34,7 @@ public class FundRequestDto {
 
     public static FundRequestDto from(AddFundRequest request) {
         return FundRequestDto.builder()
-                .writerId(request.getWriterId())
+                .writerId(request.getWriter_id())
                 .title(request.getTitle())
                 .content(request.getContent())
                 .tag(request.getTag())
@@ -47,13 +47,12 @@ public class FundRequestDto {
 
     public static FundRequestDto toAdd(AddFundRequest request) {
         return FundRequestDto.builder()
-                .writerId(request.getWriterId())
+                .writerId(request.getWriter_id())
                 .title(request.getTitle())
                 .content(request.getContent())
                 .tag(request.getTag())
                 .imageUrlsStr(request.getImage_urls())
                 .influencer(request.getInfluencer())
-                .imageUrlsStr(request.getImage_urls())
                 .build();
     }
 
@@ -63,7 +62,9 @@ public class FundRequestDto {
                 .title(fundRequest.getTitle())
                 .content(fundRequest.getContent())
                 .tag(fundRequest.getTag())
+                .influencer(fundRequest.getInfluencer())
                 .created_time(fundRequest.getCreated_time())
+                .finished_time(fundRequest.getFinished_time())
                 .writerId(fundRequest.getWriter().getId())
                 .writer(UserDto.from(fundRequest.getWriter()))
                 .request_num(fundRequest.getRequest_num())
