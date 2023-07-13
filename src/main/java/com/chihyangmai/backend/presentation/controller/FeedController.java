@@ -17,12 +17,13 @@ import java.util.stream.Collectors;
 @RequestMapping("/api")
 @RequiredArgsConstructor
 public class FeedController {
-    @Autowired
-    private FeedService feedService;
+
+    private final FeedService feedService;
 
     @PostMapping("/feed")
     public ResponseEntity<Long> save (@RequestBody AddFeedRequest request) {
         Long savedId = feedService.addFeed(FeedDto.from(request));
+
         return ResponseEntity.ok(savedId);
     }
 
@@ -30,12 +31,14 @@ public class FeedController {
     public ResponseEntity<List<FeedInfoResponse>> getAllFeeds () {
         List<FeedDto> allFeedDtoList = feedService.getAllFeeds();
         List<FeedInfoResponse> response = allFeedDtoList.stream().map(FeedInfoResponse::from).collect(Collectors.toList());
+
         return ResponseEntity.ok(response);
     }
 
     @DeleteMapping("/feed")
     public ResponseEntity<Void> deleteById (@RequestParam Long id) {
         feedService.deleteFeed(id);
+
         return ResponseEntity.ok(null);
     }
 
