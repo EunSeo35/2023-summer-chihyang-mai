@@ -25,14 +25,13 @@ public class FundRequestDto {
     private String tag;
     private int request_num;
     private String influencer;
-//    private ArrayList<String> imageUrls;
     private List<String> imageUrlsStr = new ArrayList<>();
     private List<ContentDto> imageUrlsDto = new ArrayList<>();
     private LocalDateTime created_time;
     private LocalDateTime finished_time;
 
 
-    public static FundRequestDto from(AddFundRequest request) {
+    public static FundRequestDto from (AddFundRequest request) {
         return FundRequestDto.builder()
                 .writerId(request.getWriter_id())
                 .title(request.getTitle())
@@ -42,6 +41,7 @@ public class FundRequestDto {
 //                .imageUrls(request.getImageUrls())
 //                .created_time(LocalDateTime.now())
 //                .finished_time(null)
+                .influencer(request.getInfluencer())
                 .build();
     }
 
@@ -67,6 +67,7 @@ public class FundRequestDto {
                 .finished_time(fundRequest.getFinished_time())
                 .writerId(fundRequest.getWriter().getId())
                 .writer(UserDto.from(fundRequest.getWriter()))
+                .writerId(fundRequest.getWriter().getId())
                 .request_num(fundRequest.getRequest_num())
                 .imageUrlsDto(contentDtoList)
                 .build();

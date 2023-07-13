@@ -1,7 +1,6 @@
 package com.chihyangmai.backend.presentation.response;
 
 import com.chihyangmai.backend.application.dto.ContentDto;
-import com.chihyangmai.backend.application.dto.FeedDto;
 import com.chihyangmai.backend.application.dto.FundRequestDto;
 import com.chihyangmai.backend.application.dto.UserDto;
 import com.fasterxml.jackson.annotation.JsonFormat;

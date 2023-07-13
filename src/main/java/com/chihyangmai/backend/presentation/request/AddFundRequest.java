@@ -14,6 +14,8 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 public class AddFundRequest {
+
+    private User writer;
     private Long writer_id;
     private String title;
     private String content;
