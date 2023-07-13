@@ -1,5 +1,6 @@
 package com.chihyangmai.backend.application.dto;
 
+import com.chihyangmai.backend.domain.entity.FundRequest;
 import com.chihyangmai.backend.presentation.request.AddFundRequest;
 import com.chihyangmai.backend.presentation.request.UpdateFundRequest;
 import lombok.AllArgsConstructor;
@@ -9,6 +10,7 @@ import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.List;
 
 @Getter
 @NoArgsConstructor
@@ -23,7 +25,9 @@ public class FundRequestDto {
     private String tag;
     private int request_num;
     private String influencer;
-    private ArrayList<String> imageUrls;
+//    private ArrayList<String> imageUrls;
+    private List<String> imageUrlsStr = new ArrayList<>();
+    private List<ContentDto> imageUrlsDto = new ArrayList<>();
     private LocalDateTime created_time;
     private LocalDateTime finished_time;
 
@@ -34,10 +38,10 @@ public class FundRequestDto {
                 .title(request.getTitle())
                 .content(request.getContent())
                 .tag(request.getTag())
-                .influencer(request.getInfluencer())
-                .imageUrls(request.getImageUrls())
-                .created_time(LocalDateTime.now())
-                .finished_time(null)
+                .imageUrlsStr(request.getImage_urls())
+//                .imageUrls(request.getImageUrls())
+//                .created_time(LocalDateTime.now())
+//                .finished_time(null)
                 .build();
     }
 
@@ -47,10 +51,23 @@ public class FundRequestDto {
                 .title(request.getTitle())
                 .content(request.getContent())
                 .tag(request.getTag())
+                .imageUrlsStr(request.getImage_urls())
                 .influencer(request.getInfluencer())
-                .imageUrls(request.getImageUrls())
-                .created_time(LocalDateTime.now())
-                .finished_time(null)
+                .imageUrlsStr(request.getImage_urls())
+                .build();
+    }
+
+    public static FundRequestDto from (FundRequest fundRequest, List<ContentDto> contentDtoList) {
+        return FundRequestDto.builder()
+                .id(fundRequest.getId())
+                .title(fundRequest.getTitle())
+                .content(fundRequest.getContent())
+                .tag(fundRequest.getTag())
+                .created_time(fundRequest.getCreated_time())
+                .writerId(fundRequest.getWriter().getId())
+                .writer(UserDto.from(fundRequest.getWriter()))
+                .request_num(fundRequest.getRequest_num())
+                .imageUrlsDto(contentDtoList)
                 .build();
     }
 

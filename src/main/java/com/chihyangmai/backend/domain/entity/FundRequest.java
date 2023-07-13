@@ -10,7 +10,6 @@ import org.hibernate.annotations.SQLDelete;
 import org.hibernate.annotations.Where;
 
 import javax.persistence.*;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -31,14 +30,15 @@ public class FundRequest extends BaseEntity {
     @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY)
     private User writer;
-
     private String title;
     private String content;
     private String tag;
     private int request_num;
-    private LocalDateTime created_time;
-    private LocalDateTime finished_time;
     private String influencer;
+//
+//    private LocalDateTime created_time;
+//    private LocalDateTime finished_time;
+
 
     @JsonIgnore
     @OneToMany(mappedBy = "feed", cascade = CascadeType.ALL)
@@ -51,20 +51,20 @@ public class FundRequest extends BaseEntity {
                 .content(request.getContent())
                 .tag(request.getTag())
                 .influencer(request.getInfluencer())
-                .imageUrls(request.getImageUrls())
+//                .imageUrls(request.getImageUrls())
                 .build();
     }
 
-    public static FundRequestDto toAdd(AddFundRequest request) {
-        return FundRequestDto.builder()
-                .writerId(request.getWriterId())
-                .title(request.getTitle())
-                .content(request.getContent())
-                .tag(request.getTag())
-                .influencer(request.getInfluencer())
-                .imageUrls(request.getImageUrls())
-                .build();
-    }
+//    public static FundRequestDto toAdd(AddFundRequest request) {
+//        return FundRequestDto.builder()
+//                .writerId(request.getWriterId())
+//                .title(request.getTitle())
+//                .content(request.getContent())
+//                .tag(request.getTag())
+//                .influencer(request.getInfluencer())
+////                .imageUrls(request.getImageUrls())
+//                .build();
+//    }
 
     public static FundRequest toFund(FundRequestDto dto) {
         return FundRequest.builder()

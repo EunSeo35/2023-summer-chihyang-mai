@@ -2,6 +2,7 @@ package com.chihyangmai.backend.application.service;
 
 import com.chihyangmai.backend.application.dto.ContentDto;
 import com.chihyangmai.backend.application.dto.FundRequestDto;
+import com.chihyangmai.backend.domain.entity.Content;
 import com.chihyangmai.backend.domain.entity.FundRequest;
 import com.chihyangmai.backend.domain.entity.User;
 import com.chihyangmai.backend.domain.repository.FundRequestRepository;
@@ -10,6 +11,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -37,19 +39,29 @@ public class FundRequestService {
 
     @Transactional
     public Long addFund(FundRequestDto dto) {
-//        User user = userRepository.findById(dto.getWriterId()).orElseThrow(() -> new NoSuchElementException("User not found"));
+//        User user = userRepository.findById(dto.getWriterId()).orElseThrow(() -> new IllegalArgumentException("No such user"));
         FundRequest newFundRequest = fundrequestRepository.save(FundRequest.toFund(dto));
+        List<Content> contentList = dto.getImageUrlsStr().stream()
+                .map(url -> Content.toContent(url, newFundRequest))
+                .collect(Collectors.toList());
+        newFundRequest.setContentList(contentList);
+
         return newFundRequest.getId();
     }
 
-//    @Transactional
-//    public List<FundRequestDto> getAllFunds() {
-//        List<FundRequest> allFundListRequest = fundrequestRepository.findAll();
-//        for (FundRequest f : allFundListRequest) {
-//            List<ContentDto> contentDtoList = f.getContentList().stream().map(ContentDto::from)
-//                    .collect(Collectors.toList());
-//            allFundDtoList.add(FundRequestDto.from(f, contentDtoList));
-//            return  allFundListRequest;
+    @Transactional
+    public List<FundRequestDto> getAllFunds() {
+        List<FundRequest> allFundRequestList = fundrequestRepository.findAll();
+        List<FundRequestDto> allFundRequestDtoList = new ArrayList<>();
+        for (FundRequest f : allFundRequestList) {
+            List<ContentDto> contentDtoList = f.getContentList().stream().map(ContentDto::from)
+                    .collect(Collectors.toList());
+            allFundRequestDtoList.add(FundRequestDto.from(f, contentDtoList));
+        }
+        return allFundRequestDtoList;
+    }
+
+
+
 //        }
-//    }
 }

@@ -1,10 +1,13 @@
 package com.chihyangmai.backend.presentation.controller;
 
 
+import com.chihyangmai.backend.application.dto.FeedDto;
 import com.chihyangmai.backend.application.dto.FundRequestDto;
 import com.chihyangmai.backend.application.service.FundRequestService;
 import com.chihyangmai.backend.presentation.request.AddFundRequest;
 import com.chihyangmai.backend.presentation.request.UpdateFundRequest;
+import com.chihyangmai.backend.presentation.response.FundInfoResponse;
+import com.chihyangmai.backend.presentation.response.FeedInfoResponse;
 import com.chihyangmai.backend.presentation.response.FundInfoResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -20,22 +23,19 @@ public class FundRequestController {
 
     private final FundRequestService fundrequestService;
 
-//    @PostMapping("/fund")
-//    public ResponseEntity<Long> save(@RequestBody AddFundRequest request) {
-//        Long savedId = fundrequestService.addFund(FundRequestDto.toAdd(request));
-//        return ResponseEntity.ok(savedId);
-//    }
+    @PostMapping("/fund")
+    public ResponseEntity<Long> save(@RequestBody AddFundRequest request) {
+        Long savedId = fundrequestService.addFund(FundRequestDto.toAdd(request));
+        return ResponseEntity.ok(savedId);
+    }
 
-//    @GetMapping("/fund")
-//    public ResponseEntity<List<FundInfoResponse>> getAllFeeds() {
-//
-//        List<FundRequestDto> allFundDtoList = fundrequestService.getAllFunds();
-//        List<FundInfoResponse> response = allFundDtoList.stream()
-//                .map(FundInfoResponse::from)
-//                .collect(Collectors.toList());
-//        return ResponseEntity.ok(response);
-//
-//    }
+    @GetMapping("/fund")
+    public ResponseEntity<List<FundInfoResponse>> getAllFunds() {
+        List<FundRequestDto> allFundReqestDtoList = fundrequestService.getAllFunds();
+        List<FundInfoResponse> response = allFundReqestDtoList.stream().map(FundInfoResponse::from).collect(Collectors.toList());
+        return ResponseEntity.ok(response);
+
+    }
     @DeleteMapping("/fund")
     public ResponseEntity<Void> deleteById(@RequestParam Long id) {
         fundrequestService.deleteFundRequest(id);

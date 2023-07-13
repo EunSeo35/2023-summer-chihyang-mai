@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.util.ArrayList;
+import java.util.List;
 
 @Getter
 @Setter
@@ -20,5 +21,7 @@ public class AddFundRequest {
     private String content;
     private String tag;
     private String influencer;
-    private ArrayList<String> imageUrls;
+    private List<String> image_urls = new ArrayList<>();
+
+    //    private ArrayList<String> imageUrls;
 }
