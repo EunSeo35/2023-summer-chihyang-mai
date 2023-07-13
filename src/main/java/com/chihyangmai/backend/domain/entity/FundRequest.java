@@ -26,10 +26,6 @@ public class FundRequest extends BaseEntity {
     @Id //기본키
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-    @JsonIgnore
-    @ManyToOne(fetch = FetchType.LAZY)
-    private User writer;
     private String title;
     private String content;
     private String tag;
@@ -37,8 +33,16 @@ public class FundRequest extends BaseEntity {
     private String influencer;
 
     @JsonIgnore
-    @OneToMany(mappedBy = "fund request", cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.LAZY)
+    private User writer;
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "fundrequest", cascade = CascadeType.ALL)
     private List<Content> contentList = new ArrayList<>();
+
+    @JsonIgnore
+    @OneToOne
+    private Feed feed;
 
 
     public static FundRequest toFund(FundRequestDto dto) {
