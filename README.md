@@ -33,6 +33,7 @@
 
 </div>
 
+
   
 <br/>
 <h3>👨‍👩‍👧 팀원 소개<h3/>
@@ -44,6 +45,16 @@
 |[](https://github.com/0lrlokr)|[](https://github.com/Kimminsu16)|[](https://github.com/ohinhyuk)|[](https://github.com/22100584)|[](https://github.com/EunSeo35)|[](https://github.com/Dobbinci)|[](https://github.com/blackcowman)|
 |김가은|박조이|오인혁|이창건|박은서|이다빈|소병찬
 |기획자|디자이너|프론트엔드|프론트엔드|백엔드|백엔드|백엔드
+
+<br />
+<h3>🎥동영상 링크 ( 데모 영상 )</h3>
+
+
+<a href="https://youtu.be/XfnW9EWUVDA">
+https://youtu.be/XfnW9EWUVDA
+</a>
+<hr/><br /><br />
+
 
 <br/>
 
